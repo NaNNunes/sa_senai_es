@@ -1,0 +1,32 @@
+/* titulo do form */
+.cardheader{
+    padding: 1rem;
+    color: white;
+    background-color: #101F62;
+}
+.cardtitulo{
+    font: bold 2rem arial;
+    text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.301);
+}
+
+/*card topico*/
+.topico{
+    margin-bottom: 1rem;
+    box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.055);
+}
+.cardsubtituloheader{
+    padding: 1rem 0;
+    background-color: #46BED6;
+    color: white;
+}
+.cardsubtitulo{
+    margin: 0 0 .5rem;
+    font: bold 1.5rem arial;
+    text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.219);
+}
+.carddescricao{
+    margin: 0 1rem;
+    text-align: center;
+    font: normal .9rem arial;
+    text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.11);
+}

@@ -1,0 +1,145 @@
+.container{
+    margin-bottom: 1rem;
+}
+
+.cardcontainer{
+    margin: 5% auto;
+    border: none;
+    box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.333);
+    width: 100%;
+}
+
+.cardheader{
+    background: linear-gradient(to right, #1F29AC, #51199E);
+    text-align: center;
+    
+}
+
+.name{
+    margin: 0 0 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    font: bold 2rem arial;
+    text-shadow: 2px 3px 4px rgba(0, 0, 0, 0.39);
+    text-decoration: none;
+    height: 110px;
+    color: white;
+}
+.name:hover{
+    -webkit-text-stroke: 2px #ffffff3a;
+    text-shadow:  3px 4px 5px rgba(0, 0, 0, 0.507);
+}
+
+.cursoimg{
+    margin: 0 -1rem;
+    background-color: rgba(0, 0, 0, 0.301);
+    height: 10rem;
+}
+
+.localidade{
+    margin-top: 1rem;
+    padding: .5rem 0rem;
+    width: 100px;
+    text-align: center;
+    color: white;
+    font: bold 1rem arial;
+    background-color: #1F29AC;
+
+    border-radius: 5px;
+    box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.185);
+}
+
+.duracao{
+    margin-top: 1rem;
+    padding: .5rem 0rem;
+    width: 100px;
+    text-align: center;
+    color: white;
+    font: bold 1rem arial;
+    background-color: #1F29AC;
+
+    border-radius: 5px;
+    box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.185);
+}
+
+.turno{
+    margin-top: 1rem;
+    padding: .5rem 0rem;
+    width: 100px;
+    text-align: center;
+    color: white;
+    font: bold 1rem arial;
+    background-color: #1F29AC;
+
+    border-radius: 5px;
+    box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.185);
+}
+
+.modalidade{
+    margin-top: 1rem;
+    padding: .5rem 0rem;
+    width: 100px;
+    text-align: center;
+    color: white;
+    font: bold 1rem arial;
+    background-color: #1F29AC;
+
+    border-radius: 5px;
+    box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.185);
+}
+
+.data{
+    margin-top: 1rem;
+    padding: .5rem 0rem;
+    width: 100px;
+    text-align: center;
+    color: white;
+    font: bold 1rem arial;
+    background-color: #1F29AC;
+
+    border-radius: 5px;
+    box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.185);
+}
+
+.valortotalcontainer{
+    margin-top: 1rem;
+    padding: .5rem 0rem;
+    width: 100px;
+    text-align: center;
+    font: bold 1rem arial;
+    background-color: #1F29AC;
+
+    border-radius: 5px;
+    box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.185);
+}
+
+.valores{
+    text-align: end;
+    margin-top: 1.5rem;
+    margin-right: 1rem;
+    text-shadow: 2px 3px 1px rgba(0, 0, 0, 0.055);
+}
+
+
+.total{
+    color:#F2AB13;
+    font: bold 1.2rem arial;
+    text-shadow: 2px 3px 1px rgba(0, 0, 0, 0.055);
+}
+
+.parcela{
+    margin-top: .5rem;
+    color: #FC5707;
+    font: bold 1.5rem arial;
+    text-shadow: 2px 3px 2px rgba(0, 0, 0, 0.055);
+}
+
+.btn{
+    margin-top: 1rem;
+    padding: .8rem;
+    width: 100%;
+    border-color: white;
+    background: linear-gradient( to right, #101F62, #51199E);
+}

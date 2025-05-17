@@ -1,0 +1,29 @@
+.cardcontent{
+    margin: 1rem auto;
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
+    box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.3);
+}
+
+.texto{
+    text-align: justify;
+}
+
+.subtitlecontent{
+    margin: 1.7rem 1rem 0;
+}
+
+.subtitle{
+    font: bold 1.3rem arial;
+}
+
+.iconesubtitle{
+    margin: .5rem 1rem 0;
+}
+
+.lista{
+    text-align: justify;
+    border-radius: 5px;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
