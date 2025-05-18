@@ -5,6 +5,10 @@ import Card from "react-bootstrap/Card";
 
 import senaiLogo from "../../assets/senailogo.png";
 
+import instaIcon from "../../assets/icones/instaicon.png"
+import ytIcon from "../../assets/icones/yticon.png"
+import faceIcon from "../../assets/icones/faceicon.png"
+
 const Footer = () => {
   return (
     <footer
@@ -36,13 +40,20 @@ const Footer = () => {
                 </Row>
 
                 <Row className="my-2">
-                    <Col className="">
+                    <Col className="mb-2" xs={12} md={6}>
                         <Card.Text >
                             Desde 1952 qualificando pessoas para o setor industrial
                         </Card.Text>
                     </Col>
-                    <Col>
-                        
+                    <Col className="d-flex justify-content-center">
+                        <Row className="m-auto">
+                            <Col>
+                                <img src={instaIcon} alt="" width="30px" className="mx-3"/>
+                                <img src={faceIcon} alt="" width="30px" className="mx-3" />
+                                <img src={ytIcon} alt="" width="30px" className="mx-3" />
+                            </Col>
+                            
+                        </Row>
                     </Col>
                 </Row>
             
@@ -53,9 +64,16 @@ const Footer = () => {
                         </Card.Subtitle>
                     </Col>
                 </Row>
-            
+
+               
+
             </Card.Footer>
         </Container>
+        <Row className="pt-3 text-center mt-5 fs-4 fw-semibold" style={{backgroundColor:"#1E29A8"}}>
+            <Col>
+                2025 - SENAI ES
+            </Col>
+        </Row>
         
     </footer>
   )
