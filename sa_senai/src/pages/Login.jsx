@@ -12,9 +12,72 @@ import LogoSenai from '../assets/senailogo.png';
 
 import { Link } from 'react-router-dom';
 
+// Importando o hook useState para monitorar a mudança das variáveis
+import { useState, useEffect } from "react";
+
+//Importação do navigate pra transitar entre páginas
+import { useNavigate } from "react-router-dom";
+
+// Importando o hook useForm do react-hook-form
+import { useForm } from "react-hook-form";
+
+// Importando o hook useVerificaLogin
+import { useVerificaLogin } from "../hook/useApi.js";
+
+// Importa o hook de usar um contexto
+import { useContext } from "react";
+// Importa o contexto de usuário
+import { AuthContext } from "../context/UserContext.jsx";
+
 const Login = () => {
+  // Usa as variaveis do contexto de usuário
+  const { logout } = useContext(AuthContext);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  // Criando o navigate
+  const navigate = useNavigate();
+
+  // Usando a funcao VerificaLogin do hook de verificacao
+  const { verificaLogin } = useVerificaLogin();
+
+  // funcao pra caso de sucesso na validacao do formulario
+  // data é o objeto com os campos do formulário
+  const onSubmit = (data) => {
+    console.log("Dados:", data);
+
+    // envia data para o hook de verificacao de login e guarda a reposta na variavel res
+    const res = verificaLogin(data);
+
+    // caso a resposta seja de sucesso, redireciona para a pagina home
+    if (res === "Login efetuado com sucesso") {
+      alert("Login efetuado com sucesso");
+      navigate("/home");
+    } 
+    
+    // caso a resposta seja de erro, mostra a mensagem retornada para o alerta
+    else {
+      alert(res);
+    }
+  };
+
+  //Caso tenha erro no formulario, mostra mensagens de erro nos campos 
+  const onError = (errors) => {
+    console.log("Erros:", errors);
+  };
+
+  // Assim que entrar nessa página, o localStorage é resetado
+  useEffect(() => {
+    //Resetar localstorage
+    logout()
+  }, []);
+
   return (
-    <Container>
+    <div>
       <Col md={10} lg={9} xl={8} className='m-auto'>
         <Card
           style={{backgroundColor:'#1F29AC', color:"white"}}
@@ -41,15 +104,18 @@ const Login = () => {
                 style={{backgroundColor:'white'}}
                 className='rounded-1'
               >
-                <Form>
+                <Form onSubmit={handleSubmit(onSubmit, onError)}>
                   <FloatingLabel
                     className='mb-3'
                     id='userEmailInput'
-                    label='Email ou CPF'
+                    label='Email'
                   >
                     <Form.Control
                       type='email'
                       placeholder=''
+                      {
+                        ...register("email")
+                      }
                     />
                   </FloatingLabel>
                   <InputGroup className="mb-3">
@@ -60,6 +126,9 @@ const Login = () => {
                       <Form.Control
                         type='password'
                         placeholder=''
+                        {
+                          ...register("senha")
+                        }
                       />
                     </FloatingLabel>
                     {/* add show pass */}
@@ -96,7 +165,7 @@ const Login = () => {
           </Row>
         </Card>
       </Col>
-    </Container>
+    </div>
   )
 }
 

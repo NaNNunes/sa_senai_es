@@ -11,12 +11,18 @@ import { useNavigate } from 'react-router-dom';
 
 import SenaiLogo from "../../assets/senailogo.png";
 
+
+// Importa o hook de usar um contexto
+import { useContext } from "react";
+// Importa o contexto de usuário
+import { AuthContext } from "../../context/UserContext.jsx";
+
 const BarraNav = () => {
+  // Usa as variaveis do contexto de usuário
+  const { usuarioNome, logout } = useContext(AuthContext);
+
   const userName = ''
   const navigate = useNavigate();
-  const onClick = () =>{
-    navigate('/login');
-  }
 
   return (
     <div>
@@ -26,7 +32,7 @@ const BarraNav = () => {
               background:"linear-gradient(to bottom, #1F29AC, #101F62)"
             }
           }
-          expand="sm"
+          expand="md"
           data-bs-theme="dark"
         >
             <Container>
@@ -67,22 +73,39 @@ const BarraNav = () => {
                   </NavDropdown>
                 </Nav>
                 <Nav className='justify-content-end'>
-                  <Navbar.Text>
-                      {
-                        // to show the user name
-                        userName === "" && null
-                      }    
+                  <Navbar.Text className='me-5'>
+                      {usuarioNome}
                   </Navbar.Text>
-                  <Button 
-                    className='fw-bold text-uppercase shadow-sm'
-                    style={{
-                      backgroundColor:"#101F62", 
-                      border:"1px solid rgb(255,255,255, .1)"
-                    }}
-                    onClick={onClick}
-                  >
-                    Entrar
-                  </Button>
+                  {
+                    usuarioNome === "Visitante" ? (
+                      <>
+                        <Button 
+                          className='fw-bold text-uppercase shadow-sm '
+                          style={{
+                            backgroundColor:"#101F62", 
+                            border:"1px solid rgb(255,255,255, .1)"
+                          }}
+                          href='/login'
+                        >
+                          Entrar
+                        </Button>
+                      </>
+                    ) :(
+                      <>
+                        <Button 
+                          className='fw-bold text-uppercase shadow-sm ms-3'
+                          variant='danger'
+                          href='/login'
+                          onClick={logout}
+                        >
+                          Sair
+                        </Button>
+                      </>
+                    )
+                  }
+
+
+                  
                 </Nav>
               </Navbar.Collapse>
             </Container>

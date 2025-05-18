@@ -9,58 +9,87 @@ import Row from 'react-bootstrap/Row';
 import FloatingLabel  from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import Alert from "react-bootstrap/Alert";
 
 import { useForm } from 'react-hook-form';
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
+import { useCadastrarUser, useVerificadorCpf } from "../../hook/useApi";
 
 const Cadastro = () => {
-
-    const [endereco, setEndereco] = useState({city:'', street:'', neighborhood:'', state:''});
+    // para navegador
+    const navigate = useNavigate();
+    
+    // estrutura de endereco
+    const [endereco, setEndereco] = 
+    useState(
+        {
+            cep:'',
+            city:'',
+            street:'', 
+            neighborhood:'',
+            state:''
+        }
+    );
 
     // consulta cep assim que é perdido o foco do campo cep
     const handleZipCodeBlur = async (e) =>{
         const zipCode = e.target.value;
         console.log(zipCode);
 
-        try{
-            const response =  await fetch(`https://brasilapi.com.br/api/cep/v2/${zipCode}`)
-            console.log(response.ok)
-            if(response.ok){
-                const data = await response.json();
-                console.log("Endereço localizado", data);
-                setEndereco({
-                    city: data.city,
-                    street: data.street,
-                    neighborhood: data.neighborhood,
-                    state: data.state
-                });   
-            }
+        const response =  await fetch(`https://brasilapi.com.br/api/cep/v2/${zipCode}`)
+        console.log(response.ok)
+        if(response.ok){
+            const data = await response.json();
+            console.log("Endereço localizado", data);
+            setEndereco({
+                city: data.city,
+                street: data.street,
+                neighborhood: data.neighborhood,
+                state: data.state
+            });      
         }
-        catch(erro){
-            console.log("Endereço não localizado: ", erro.message);
+        else{
+            alert("Endereço não encontrado");
+            setEndereco({
+                cep:"",
+                city: "",
+                street: "",
+                neighborhood: "",
+                state: ""
+            }); 
         }
+        
     }
+
+    const {cadastrarUser} = useCadastrarUser();
+    const {verificadorCpf} = useVerificadorCpf();
 
     const {
         register,
         handleSubmit,
         formState:{errors},
-        reset,
+        setValue,
         watch
     } = useForm();
 
-    const onSubmit = (data) =>{
+    const onSubmit = async (data) =>{
         console.log(data);
+
+        if(verificadorCpf(data.cpf) == false){
+           alert("CPf inválido"); 
+           return false;
+        }
+
+        cadastrarUser(data);
+        console.log("User cadastrado com sucesso");
+        alert("User cadastrado com sucesso")
+        navigate("/login");
 
     }
     const onError = (error) =>{
         console.log("Erro: ", error);
     }
-
-    const [alertClass, setAlertClass] = useState("mb-5 d-none");
-    const [alertMsg, setAlertMsg] = useState("");
 
   return (
     <div>
@@ -104,7 +133,7 @@ const Cadastro = () => {
                                                                     message:"Informe um nome válido"
                                                                 },
                                                                 pattern:{
-                                                                    value:/^[A-Za-z]+$/,
+                                                                    value:/^[A-Za-z\s]+$/i,
                                                                     message:"Insira apenas letras"
                                                                 }
                                                             })
@@ -396,10 +425,26 @@ const Cadastro = () => {
                                                     <Form.Control
                                                         type='text'
                                                         placeholder=''
-                                                        onBlur={handleZipCodeBlur}
+                                                        {
+                                                            ...register("zipcode", {
+                                                                maxLength:{
+                                                                    value:8,
+                                                                    message: "Necessário 8 números"
+                                                                },
+                                                                minLength:{
+                                                                    value:8,
+                                                                    message:"Necessário 8 números"
+                                                                },
+                                                                pattern:{
+                                                                    value: /^[0-9]+$/,
+                                                                    message: "Apenas números"
+                                                                },
+                                                                onBlur: handleZipCodeBlur
+                                                            })
+                                                        }
                                                     />
                                                     {
-                                                        errors.cep &&
+                                                        errors.zipcode &&
                                                             <div 
                                                                 className=" 
                                                                     w-75 mx-5 mt-2 
@@ -407,7 +452,7 @@ const Cadastro = () => {
                                                                     bg-danger text-light rounded
                                                                     "
                                                                 >
-                                                                    {(errors.cep.message)}
+                                                                    {(errors.zipcode.message)}
                                                             </div>
                                                     }
                                                 </FloatingLabel>
@@ -423,6 +468,9 @@ const Cadastro = () => {
                                                         type='text'
                                                         placeholder=''
                                                         value={endereco.state}
+                                                        {
+                                                            ...register("state")
+                                                        }
                                                     />
                                                 </FloatingLabel>
                                             </Col>
@@ -439,6 +487,9 @@ const Cadastro = () => {
                                                         type='text'
                                                         placeholder=''
                                                         value={endereco.street}
+                                                        {
+                                                            ...register("street")
+                                                        }
                                                     />
                                                 </FloatingLabel>
                                             </Col>
@@ -455,6 +506,9 @@ const Cadastro = () => {
                                                         type='text'
                                                         placeholder=''
                                                         value={endereco.neighborhood}
+                                                        {
+                                                            ...register("neighborhood")
+                                                        }
                                                     />
                                                 </FloatingLabel>
                                             </Col>
@@ -471,6 +525,9 @@ const Cadastro = () => {
                                                         type='text'
                                                         placeholder=''
                                                         value={endereco.city}
+                                                        {
+                                                            ...register("city")
+                                                        }
                                                     />
                                                 </FloatingLabel>
                                             </Col>

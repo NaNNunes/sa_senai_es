@@ -17,7 +17,7 @@ const CursoCard = (props) => {
             <Card.Header className={styles.cardheader}>
                 <Card.Title className={styles.cursotitle}>
                     <Link 
-                        to={"/cursos/tecnico-dev-sistemas"} 
+                        to={`/cursos/${props.id}`} 
                         className={styles.name}
                     >
                         {props.nome}
