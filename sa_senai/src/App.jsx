@@ -12,11 +12,17 @@ function App() {
     <>
       <AuthProvider>
         <div>
-          <BarraNav/>
-          <Container>
-            <Outlet/>
-          </Container>
-          <Footer/>
+          <header>
+            <BarraNav/>
+          </header>
+          <section>
+            <Container>
+              <Outlet/>
+            </Container>
+          </section>
+          <footer>
+            <Footer/>
+          </footer>
         </div>
       </AuthProvider>
     </>
