@@ -44,6 +44,21 @@
       "imgUrl": "./src/assets/cursos/eletromecimg.png",
       "link2Detalhes": "https://admin.loja.senaies.com.br/pub/media/catalog/product//e/l/eletromecanica__1_24.jpg",
       "objetivo": "Formar profissionais capazes de atuar na montagem, na manutenção e em novos projetos e desenvolvimentos elétricos e mecânicos de máquinas e equipamentos, de acordo com as normas técnicas, de saúde, segurança e ambientais vigentes."
+    },
+    {
+      "id": "4",
+      "nome": "Serviço Social",
+      "valorTotal": "2.994,00",
+      "valorParcela": "499,00",
+      "qtdParcelas": "6",
+      "localidade": "Viória",
+      "duracao": "1200 horas",
+      "turno": "Matutino",
+      "modalidade": "Presencial",
+      "data": "28/07/2025",
+      "imgUrl": "./src/assets/cursos/eletromecimg.png",
+      "link2Detalhes": "https://admin.loja.senaies.com.br/pub/media/catalog/product//e/l/eletromecanica__1_24.jpg",
+      "objetivo": "Formar profissionais capazes de atuar na montagem, na manutenção e em novos projetos e desenvolvimentos elétricos e mecânicos de máquinas e equipamentos, de acordo com as normas técnicas, de saúde, segurança e ambientais vigentes."
     }
   ],
   "users": [
@@ -87,6 +102,21 @@
       "senha": "User@123",
       "confirmarSenha": "User@123",
       "zipcode": "29135508",
+      "state": "",
+      "street": "",
+      "neighborhood": "",
+      "city": ""
+    },
+    {
+      "id": "868e",
+      "nome": "kllayver",
+      "sobrenome": "Augustho",
+      "cpf": "20669742775",
+      "celular": "27997205876",
+      "email": "kllayveraugustho@gmail.com",
+      "senha": "Kllayver@123",
+      "confirmarSenha": "Kllayver@123",
+      "zipcode": "29050670",
       "state": "",
       "street": "",
       "neighborhood": "",
