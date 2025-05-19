@@ -93,7 +93,7 @@ const Footer = () => {
 
             </Card.Footer>
         </Container>
-        <Row className="pt-3 text-center mt-5 fs-4 fw-semibold" style={{backgroundColor:"#1E29A8"}}>
+        <Row className="pt-3 text-center mt-5 fs-4 fw-semibold" style={{backgroundColor:"#1E29A8", margin:" 1rem -1rem 0"}}>
             <Col>
                 2025 - SENAI ES
             </Col>
